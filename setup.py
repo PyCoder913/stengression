@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="stengression",
     version="0.0.1",
-    author="Rajdeep Pathak",
+    author="Rajdeep Pathak, Tanujit Chakraborty",
     author_email="pathakrajdeep91@gmail.com",
     description="Deep spatiotemporal engression networks for probabilistic forecasting",
     long_description=long_description,
