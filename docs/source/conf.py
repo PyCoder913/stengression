@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 project = 'stengression'
 copyright = '2026, Rajdeep Pathak and Tanujit Chakraborty'
 author = 'Rajdeep Pathak and Tanujit Chakraborty'
-release = '0.0.1'
+release = '0.0.2'
 
 extensions = [
     'sphinx.ext.autodoc',
