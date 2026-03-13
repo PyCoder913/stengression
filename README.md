@@ -36,7 +36,7 @@ pip install stengression
 ### Option 2: Install from Source
 If you want to modify the code or run the latest development version, you can clone the repository:
 ```bash
-git clone [https://github.com/PyCoder913/stengression.git](https://github.com/PyCoder913/stengression.git)
+git clone https://github.com/PyCoder913/stengression.git
 cd stengression
 pip install -r requirements.txt
 ```
