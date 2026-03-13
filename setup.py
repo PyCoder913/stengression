@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="stengression",
-    version="0.0.1",
+    version="0.0.2",
     author="Rajdeep Pathak, Tanujit Chakraborty",
     author_email="pathakrajdeep91@gmail.com",
     description="Deep spatiotemporal engression networks for probabilistic forecasting",
@@ -18,6 +18,11 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Scientific/Engineering :: Medical Science Apps.",
     ],
+    project_urls={
+        "Documentation": "https://stengression.readthedocs.io/",
+        "Source Code": "https://github.com/PyCoder913/stengression",
+        "Paper": "https://arxiv.org/abs/2603.07108",
+    },
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     python_requires=">=3.7",
