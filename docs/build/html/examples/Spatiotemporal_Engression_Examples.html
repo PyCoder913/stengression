@@ -1,0 +1,1210 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Prepare the distances and adjacency matrix &#8212; stengression 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/Spatiotemporal_Engression_Examples';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="../api.html" />
+    <link rel="prev" title="Installation" href="../install.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">stengression 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../cite.html">
+    Citation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../cite.html">
+    Citation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">1. Prepare the distances and adjacency matrix</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">stengression</span><span class="w"> </span><span class="kn">import</span> <span class="n">GCEN</span><span class="p">,</span> <span class="n">STEN</span><span class="p">,</span> <span class="n">MVEN</span><span class="p">,</span> <span class="n">GraphInfo</span><span class="p">,</span> <span class="n">SpatioTemporalDataset</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">stengression</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_adjacency_matrix</span><span class="p">,</span> <span class="n">prepare_spatial_weights</span><span class="p">,</span> <span class="n">plot_forecasts</span><span class="p">,</span> <span class="n">energy_score_loss</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="prepare-the-distances-and-adjacency-matrix">
+<h1>1. Prepare the distances and adjacency matrix<a class="headerlink" href="#prepare-the-distances-and-adjacency-matrix" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the matrix containing Haversine distances for each node and compute the adjacency matrix</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Belgium_Distance_Matrix.csv&quot;</span><span class="p">)</span>
+<span class="n">dist_array</span> <span class="o">=</span> <span class="n">distances</span><span class="o">.</span><span class="n">values</span>
+<span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="n">compute_adjacency_matrix</span><span class="p">(</span><span class="n">distances</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="mf">0.9948808074595779</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.07692416606625796</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Belgium Adjacency Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">node_indices</span><span class="p">,</span> <span class="n">neighbor_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">adjacency_matrix</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">graph_info</span> <span class="o">=</span> <span class="n">GraphInfo</span><span class="p">(</span>
+    <span class="n">edges</span><span class="o">=</span><span class="p">(</span><span class="n">node_indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">neighbor_indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+    <span class="n">num_nodes</span><span class="o">=</span><span class="n">adjacency_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of nodes: </span><span class="si">{</span><span class="n">graph_info</span><span class="o">.</span><span class="n">num_nodes</span><span class="si">}</span><span class="s2">, Number of edges: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">graph_info</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2ef445e5ae68e805cb2049fca0479faf2085c1355fa2ffd169814ecf8894197f.png" src="../_images/2ef445e5ae68e805cb2049fca0479faf2085c1355fa2ffd169814ecf8894197f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of nodes: 11, Number of edges: 49
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">graph_conv_params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="c1"># mean, sum, max</span>
+                <span class="s2">&quot;combination_type&quot;</span><span class="p">:</span> <span class="s2">&quot;concat&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;activation&quot;</span><span class="p">:</span> <span class="kc">None</span>
+            <span class="p">}</span>
+<span class="n">gcn_seed</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">temporal_seed</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using device: </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using device: cuda.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prepare-the-training-dataset">
+<h1>2. Prepare the training dataset<a class="headerlink" href="#prepare-the-training-dataset" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Forecast horizon: 30 days</span>
+<span class="n">NUM_NODES</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">IN_FEAT_DIM</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># D</span>
+
+<span class="n">P_LAG</span> <span class="o">=</span> <span class="mi">60</span>        <span class="c1"># Lag window, input_seq_len</span>
+<span class="n">T_PRED</span> <span class="o">=</span> <span class="mi">30</span>        <span class="c1"># Prediction horizon, output_seq_len</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>
+
+<span class="n">alpha</span><span class="p">,</span> <span class="n">max_spatial_lag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> 
+<span class="n">W</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">dist_array</span><span class="o">**</span><span class="n">alpha</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">row_sums</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">W</span> <span class="o">/</span> <span class="n">row_sums</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="c1"># W is the initial spatial weights matrix</span>
+
+<span class="n">W_list</span> <span class="o">=</span> <span class="n">prepare_spatial_weights</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">max_lag</span><span class="o">=</span><span class="n">max_spatial_lag</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Belgium_Covid_Nodates.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">sts_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">sts_data</span><span class="o">=</span><span class="n">sts_data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">sts_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sts_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Converts into T x N x 1</span>
+<span class="n">sts_data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">node_names</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">train_tensor</span> <span class="o">=</span> <span class="n">sts_data</span><span class="p">[:</span><span class="o">-</span><span class="n">T_PRED</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<span class="n">test_ground_truth</span> <span class="o">=</span> <span class="n">sts_data</span><span class="p">[</span><span class="o">-</span><span class="n">T_PRED</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="c1"># The ground truth for the first forecast window is the first T_PRED steps of the test set</span>
+<span class="n">test_history</span> <span class="o">=</span> <span class="n">train_tensor</span><span class="p">[</span><span class="o">-</span><span class="n">P_LAG</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="c1"># The history required to make this forecast is the last P_LAG steps of the training set</span>
+
+<span class="c1"># Standardize train data</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_tensor</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">train_tensor</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">train_tensor</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">train_tensor</span> <span class="o">=</span> <span class="p">((</span><span class="n">train_tensor</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span><span class="p">)</span>
+<span class="n">test_history</span> <span class="o">=</span> <span class="p">((</span><span class="n">test_history</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span><span class="p">)</span> 
+
+<span class="c1"># Caution: Do not standardize test_ground_truth, as we want to compare the real forecast values. </span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">SpatioTemporalDataset</span><span class="p">(</span><span class="n">train_tensor</span><span class="p">,</span> <span class="n">input_seq_len</span><span class="o">=</span><span class="n">P_LAG</span><span class="p">,</span> <span class="n">output_seq_len</span><span class="o">=</span><span class="n">T_PRED</span><span class="p">,</span> <span class="n">multi_horizon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">trainloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mven">
+<h1>3. MVEN<a class="headerlink" href="#mven" title="Link to this heading">#</a></h1>
+<section id="training-the-mven-model">
+<h2>3.1 Training the MVEN model<a class="headerlink" href="#training-the-mven-model" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mven</span> <span class="o">=</span> <span class="n">MVEN</span><span class="p">(</span><span class="n">in_feat_dim</span><span class="o">=</span><span class="n">IN_FEAT_DIM</span><span class="p">,</span> 
+           <span class="n">lstm_hidden_dim</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">lstm_num_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+            <span class="n">lstm_dropout</span><span class="o">=</span><span class="mf">0.09462213176635498</span><span class="p">,</span> <span class="n">noise_dist</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+           <span class="n">p_lag</span><span class="o">=</span><span class="n">P_LAG</span><span class="p">,</span> <span class="n">t_pred</span><span class="o">=</span><span class="n">T_PRED</span><span class="p">,</span> 
+            <span class="n">num_nodes</span><span class="o">=</span><span class="n">NUM_NODES</span><span class="p">,</span> <span class="n">temporal_seed</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">mven</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.00440078425059993</span><span class="p">)</span> 
+
+<span class="c1"># Run Training</span>
+<span class="n">mven</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_loader</span><span class="o">=</span><span class="n">trainloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">energy_score_loss</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████| 100/100 [00:30&lt;00:00,  3.32epoch/s]
+</pre></div>
+</div>
+<img alt="../_images/cab96cba4c69c27cc33068344f528035a3a2f4bb88a1a382a89fbb30ca7d3251.png" src="../_images/cab96cba4c69c27cc33068344f528035a3a2f4bb88a1a382a89fbb30ca7d3251.png" />
+</div>
+</div>
+</section>
+<section id="in-sample-diagnostics">
+<h2>3.2 In-sample Diagnostics<a class="headerlink" href="#in-sample-diagnostics" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the un-standardized in-sample predictions</span>
+<span class="n">in_sample_preds</span> <span class="o">=</span> <span class="n">mven</span><span class="o">.</span><span class="n">predict_in_sample</span><span class="p">(</span><span class="n">train_tensor</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;q_step&quot;</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> 
+                                         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">])</span>
+
+<span class="n">in_sample_preds</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([100, 746, 11, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluation of in-sample predictions</span>
+<span class="n">mven</span><span class="o">.</span><span class="n">evaluate_in_sample_fit</span><span class="p">(</span><span class="n">train_tensor</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;q_step&quot;</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="n">point_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">unstandardize</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean</span><span class="p">,</span><span class="n">std</span><span class="p">],</span> <span class="n">device</span> <span class="o">=</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SMAPE</th>
+      <th>MAE</th>
+      <th>RMSE</th>
+      <th>MASE</th>
+      <th>RMSSE</th>
+      <th>Pinball_80</th>
+      <th>Pinball_95</th>
+      <th>Rho-0.5</th>
+      <th>Rho-0.9</th>
+      <th>CRPS</th>
+      <th>EC</th>
+      <th>Winkler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mean</th>
+      <td>67.11</td>
+      <td>224.55</td>
+      <td>565.75</td>
+      <td>1.15</td>
+      <td>1.15</td>
+      <td>111.72</td>
+      <td>85.06</td>
+      <td>0.46</td>
+      <td>0.4</td>
+      <td>185.68</td>
+      <td>0.54</td>
+      <td>4278.32</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.11</td>
+      <td>0.61</td>
+      <td>2.43</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.45</td>
+      <td>0.60</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.29</td>
+      <td>0.00</td>
+      <td>32.22</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the residuals</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">mven</span><span class="o">.</span><span class="n">get_residuals</span><span class="p">(</span><span class="n">in_sample_preds</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">point_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
+<span class="n">residuals</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([746, 11, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting the in-sample predictions vs training data and residuals</span>
+<span class="n">mven</span><span class="o">.</span><span class="n">plot_in_sample_fit</span><span class="p">(</span>
+    <span class="n">in_sample_preds</span><span class="o">=</span><span class="n">in_sample_preds</span><span class="p">,</span>
+    <span class="n">original_data</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="c1"># Ensure ground truth is also in original scale</span>
+    <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;In-Sample Fit: MVEN Probabilistic Epidemic Forecasts&quot;</span>
+<span class="p">)</span>
+
+<span class="n">mven</span><span class="o">.</span><span class="n">plot_residuals</span><span class="p">(</span>
+    <span class="n">residuals</span><span class="o">=</span><span class="n">residuals</span><span class="p">,</span>
+    <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MVEN: Residuals (Actual - Predicted)&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/574c2b30c6266a4b1748509fedd399168144896c13d28d141ea4491b7cdeac3b.png" src="../_images/574c2b30c6266a4b1748509fedd399168144896c13d28d141ea4491b7cdeac3b.png" />
+<img alt="../_images/03b10030e1a2b75991cc6d1eb2795ba2590c0f881fbdbd7925cd8f0473463871.png" src="../_images/03b10030e1a2b75991cc6d1eb2795ba2590c0f881fbdbd7925cd8f0473463871.png" />
+</div>
+</div>
+</section>
+<section id="out-of-sample-forecasts-and-evaluation">
+<h2>3.3 Out-of-sample Forecasts and Evaluation<a class="headerlink" href="#out-of-sample-forecasts-and-evaluation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_ensemble</span> <span class="o">=</span> <span class="n">mven</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">m_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="n">test_history</span><span class="p">,</span> <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">forecast_ensemble</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([100, 30, 11, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="n">mven</span><span class="o">.</span><span class="n">evaluate_forecasts</span><span class="p">(</span><span class="n">m_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+                              <span class="n">history</span><span class="o">=</span><span class="n">test_history</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">test_ground_truth</span><span class="p">,</span> <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> 
+                              <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">])</span>
+<span class="n">metrics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SMAPE</th>
+      <th>MAE</th>
+      <th>RMSE</th>
+      <th>MASE</th>
+      <th>RMSSE</th>
+      <th>Pinball_80</th>
+      <th>Pinball_95</th>
+      <th>Rho-0.5</th>
+      <th>Rho-0.9</th>
+      <th>CRPS</th>
+      <th>EC</th>
+      <th>Winkler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mean</th>
+      <td>66.41</td>
+      <td>95.81</td>
+      <td>127.96</td>
+      <td>0.49</td>
+      <td>0.26</td>
+      <td>35.56</td>
+      <td>15.81</td>
+      <td>0.54</td>
+      <td>0.27</td>
+      <td>72.87</td>
+      <td>0.62</td>
+      <td>1140.36</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.43</td>
+      <td>0.85</td>
+      <td>1.21</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.69</td>
+      <td>0.83</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.67</td>
+      <td>0.01</td>
+      <td>32.17</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_ensemble</span> <span class="o">=</span> <span class="n">mven</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_history</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">plot_forecasts</span><span class="p">(</span><span class="n">NUM_NODES</span><span class="p">,</span> <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">t_pred</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">forecast_ensemble</span><span class="o">=</span><span class="n">forecast_ensemble</span><span class="p">,</span> 
+               <span class="n">ground_truth</span><span class="o">=</span><span class="n">test_ground_truth</span><span class="p">,</span> <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">node_names</span><span class="o">=</span><span class="n">node_names</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;MVEN: Forecast vs. Actual with Prediction Interval&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/123090eee0f5ddbad6e100b992e3086b0253215cf094207f8b664e60aef4cfbf.png" src="../_images/123090eee0f5ddbad6e100b992e3086b0253215cf094207f8b664e60aef4cfbf.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="gcen">
+<h1>4. GCEN<a class="headerlink" href="#gcen" title="Link to this heading">#</a></h1>
+<section id="training-the-gcen-model">
+<h2>4.1 Training the GCEN Model<a class="headerlink" href="#training-the-gcen-model" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gcen</span> <span class="o">=</span> <span class="n">GCEN</span><span class="p">(</span><span class="n">in_feat_dim</span><span class="o">=</span><span class="n">IN_FEAT_DIM</span><span class="p">,</span>
+    <span class="n">gcn_out_feat</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">lstm_hidden_dim</span><span class="o">=</span><span class="mi">91</span><span class="p">,</span>
+    <span class="n">lstm_num_layers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">lstm_dropout</span><span class="o">=</span><span class="mf">0.30479293048737066</span><span class="p">,</span>
+    <span class="n">p_lag</span><span class="o">=</span><span class="n">P_LAG</span><span class="p">,</span>
+    <span class="n">t_pred</span><span class="o">=</span><span class="n">T_PRED</span><span class="p">,</span>
+    <span class="n">graph_info</span><span class="o">=</span><span class="n">graph_info</span><span class="p">,</span>
+    <span class="n">graph_conv_params</span><span class="o">=</span><span class="n">graph_conv_params</span><span class="p">,</span>
+    <span class="n">noise_encode</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="n">noise_dist</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+    <span class="n">gcn_seed</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+    <span class="n">temporal_seed</span><span class="o">=</span><span class="mi">9</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">gcen</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.00426979947571805</span><span class="p">)</span> 
+
+<span class="c1"># Run Training</span>
+<span class="n">gcen</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_loader</span><span class="o">=</span><span class="n">trainloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">energy_score_loss</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████| 100/100 [01:03&lt;00:00,  1.56epoch/s]
+</pre></div>
+</div>
+<img alt="../_images/a0f19bf3b45f255e88a06b59e739a738b8e8bb42e9044450e4f1e1cc5a4b701b.png" src="../_images/a0f19bf3b45f255e88a06b59e739a738b8e8bb42e9044450e4f1e1cc5a4b701b.png" />
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>4.2 In-sample Diagnostics<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the un-standardized in-sample predictions</span>
+<span class="n">in_sample_preds</span> <span class="o">=</span> <span class="n">gcen</span><span class="o">.</span><span class="n">predict_in_sample</span><span class="p">(</span><span class="n">train_tensor</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;q_step&quot;</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> 
+                                         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">])</span>
+
+<span class="n">in_sample_preds</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([100, 746, 11, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluation of in-sample predictions</span>
+<span class="n">gcen</span><span class="o">.</span><span class="n">evaluate_in_sample_fit</span><span class="p">(</span><span class="n">train_tensor</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;q_step&quot;</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="n">point_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">unstandardize</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean</span><span class="p">,</span><span class="n">std</span><span class="p">],</span> <span class="n">device</span> <span class="o">=</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SMAPE</th>
+      <th>MAE</th>
+      <th>RMSE</th>
+      <th>MASE</th>
+      <th>RMSSE</th>
+      <th>Pinball_80</th>
+      <th>Pinball_95</th>
+      <th>Rho-0.5</th>
+      <th>Rho-0.9</th>
+      <th>CRPS</th>
+      <th>EC</th>
+      <th>Winkler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mean</th>
+      <td>63.87</td>
+      <td>202.47</td>
+      <td>517.36</td>
+      <td>1.03</td>
+      <td>1.05</td>
+      <td>110.0</td>
+      <td>88.85</td>
+      <td>0.42</td>
+      <td>0.41</td>
+      <td>169.35</td>
+      <td>0.55</td>
+      <td>4072.27</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.12</td>
+      <td>0.68</td>
+      <td>3.54</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.5</td>
+      <td>0.74</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>46.93</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting the in-sample predictions vs training data and residuals</span>
+<span class="n">gcen</span><span class="o">.</span><span class="n">plot_in_sample_fit</span><span class="p">(</span>
+    <span class="n">in_sample_preds</span><span class="o">=</span><span class="n">in_sample_preds</span><span class="p">,</span>
+    <span class="n">original_data</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="c1"># Ensure ground truth is also in original scale</span>
+    <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;In-Sample Fit: GCEN Probabilistic Epidemic Forecasts&quot;</span>
+<span class="p">)</span>
+
+<span class="n">gcen</span><span class="o">.</span><span class="n">plot_residuals</span><span class="p">(</span>
+    <span class="n">residuals</span><span class="o">=</span><span class="n">residuals</span><span class="p">,</span>
+    <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;GCEN: Residuals (Actual - Predicted)&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bd481d44fc4069180fa24a6e573afd94bbd27c3f841f3b384856608b6d677599.png" src="../_images/bd481d44fc4069180fa24a6e573afd94bbd27c3f841f3b384856608b6d677599.png" />
+<img alt="../_images/818852fd40f28dd54ff623d09dabea0fa6f2f52343fa1934674105562f5f627c.png" src="../_images/818852fd40f28dd54ff623d09dabea0fa6f2f52343fa1934674105562f5f627c.png" />
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>4.2 Out-of-sample Forecasts and Evaluation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="n">gcen</span><span class="o">.</span><span class="n">evaluate_forecasts</span><span class="p">(</span><span class="n">m_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+                              <span class="n">history</span><span class="o">=</span><span class="n">test_history</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">test_ground_truth</span><span class="p">,</span> <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> 
+                              <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SMAPE</th>
+      <th>MAE</th>
+      <th>RMSE</th>
+      <th>MASE</th>
+      <th>RMSSE</th>
+      <th>Pinball_80</th>
+      <th>Pinball_95</th>
+      <th>Rho-0.5</th>
+      <th>Rho-0.9</th>
+      <th>CRPS</th>
+      <th>EC</th>
+      <th>Winkler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mean</th>
+      <td>46.99</td>
+      <td>55.13</td>
+      <td>82.02</td>
+      <td>0.28</td>
+      <td>0.17</td>
+      <td>22.2</td>
+      <td>10.17</td>
+      <td>0.31</td>
+      <td>0.18</td>
+      <td>42.38</td>
+      <td>0.86</td>
+      <td>561.29</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.08</td>
+      <td>0.86</td>
+      <td>1.44</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.6</td>
+      <td>0.32</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.59</td>
+      <td>0.01</td>
+      <td>14.58</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_ensemble</span> <span class="o">=</span> <span class="n">gcen</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_history</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">plot_forecasts</span><span class="p">(</span><span class="n">NUM_NODES</span><span class="p">,</span> <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">t_pred</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">forecast_ensemble</span><span class="o">=</span><span class="n">forecast_ensemble</span><span class="p">,</span> 
+               <span class="n">ground_truth</span><span class="o">=</span><span class="n">test_ground_truth</span><span class="p">,</span> <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">node_names</span><span class="o">=</span><span class="n">node_names</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;GCEN: Forecast vs. Actual with Confidence Interval&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a62e2b037c3604efeba56441ee184d83f7428656c0ec591b8641c05e3baef050.png" src="../_images/a62e2b037c3604efeba56441ee184d83f7428656c0ec591b8641c05e3baef050.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="sten">
+<h1>5. STEN<a class="headerlink" href="#sten" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sten</span> <span class="o">=</span> <span class="n">STEN</span><span class="p">(</span><span class="n">in_feat_dim</span><span class="o">=</span><span class="n">IN_FEAT_DIM</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_spatial_lag</span><span class="o">=</span><span class="n">max_spatial_lag</span><span class="p">,</span> <span class="n">num_nodes</span><span class="o">=</span><span class="n">NUM_NODES</span><span class="p">,</span> <span class="n">noise_dist</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+           <span class="n">lstm_hidden_dim</span><span class="o">=</span><span class="mi">39</span><span class="p">,</span> <span class="n">lstm_num_layers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lstm_dropout</span><span class="o">=</span><span class="mf">0.2433492165113465</span><span class="p">,</span> 
+           <span class="n">p_lag</span><span class="o">=</span><span class="n">P_LAG</span><span class="p">,</span> <span class="n">t_pred</span><span class="o">=</span><span class="n">T_PRED</span><span class="p">,</span> <span class="n">temporal_seed</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">sten</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0016437668357369587</span><span class="p">)</span> 
+
+<span class="c1"># Run Training</span>
+<span class="n">sten</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_loader</span><span class="o">=</span><span class="n">trainloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">energy_score_loss</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span><span class="p">)</span>
+
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">sten</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">m_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+                              <span class="n">history</span><span class="o">=</span><span class="n">test_history</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">test_ground_truth</span><span class="p">,</span> <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> 
+                              <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">],</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████| 100/100 [00:08&lt;00:00, 11.42epoch/s]
+</pre></div>
+</div>
+<img alt="../_images/43c4563f56d1b7ebadcb6e985df5ab0b75ff192d0fb6fcb821252777e4f56841.png" src="../_images/43c4563f56d1b7ebadcb6e985df5ab0b75ff192d0fb6fcb821252777e4f56841.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SMAPE</th>
+      <th>MAE</th>
+      <th>RMSE</th>
+      <th>MASE</th>
+      <th>RMSSE</th>
+      <th>Pinball_80</th>
+      <th>Pinball_95</th>
+      <th>Rho-0.5</th>
+      <th>Rho-0.9</th>
+      <th>CRPS</th>
+      <th>EC</th>
+      <th>Winkler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mean</th>
+      <td>68.29</td>
+      <td>100.76</td>
+      <td>136.04</td>
+      <td>0.51</td>
+      <td>0.28</td>
+      <td>38.57</td>
+      <td>21.37</td>
+      <td>0.57</td>
+      <td>0.33</td>
+      <td>79.06</td>
+      <td>0.53</td>
+      <td>1422.45</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.20</td>
+      <td>0.42</td>
+      <td>0.49</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.33</td>
+      <td>0.51</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.34</td>
+      <td>0.01</td>
+      <td>33.87</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_ensemble</span> <span class="o">=</span> <span class="n">sten</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_history</span><span class="p">,</span> <span class="n">m_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">unstandardize</span><span class="o">=</span><span class="p">[</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span><span class="p">)</span>
+<span class="n">plot_forecasts</span><span class="p">(</span><span class="n">NUM_NODES</span><span class="p">,</span> <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">t_pred</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">forecast_ensemble</span><span class="o">=</span><span class="n">forecast_ensemble</span><span class="p">,</span> 
+               <span class="n">ground_truth</span><span class="o">=</span><span class="n">test_ground_truth</span><span class="p">,</span> <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">node_names</span><span class="o">=</span><span class="n">node_names</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;STEN: Forecast vs. Actual with Confidence Interval&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ba1a6cd47d96a6d52c6883413834d4ae4f83cb369ffe6187882e1848e5461605.png" src="../_images/ba1a6cd47d96a6d52c6883413834d4ae4f83cb369ffe6187882e1848e5461605.png" />
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../install.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">API Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Prepare the distances and adjacency matrix</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-training-dataset">2. Prepare the training dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mven">3. MVEN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-mven-model">3.1 Training the MVEN model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-sample-diagnostics">3.2 In-sample Diagnostics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-sample-forecasts-and-evaluation">3.3 Out-of-sample Forecasts and Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gcen">4. GCEN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-gcen-model">4.1 Training the GCEN Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2 In-sample Diagnostics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2 Out-of-sample Forecasts and Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sten">5. STEN</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/Spatiotemporal_Engression_Examples.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rajdeep Pathak and Tanujit Chakraborty.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

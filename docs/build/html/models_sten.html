@@ -1,0 +1,940 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spatio-Temporal Engression Network (STEN) &#8212; stengression 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'models_sten';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multivariate Engression Network (MVEN)" href="models_mven.html" />
+    <link rel="prev" title="Graph Convolutional Engression Network (GCEN)" href="models_gcen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">stengression 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples/Spatiotemporal_Engression_Examples.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="cite.html">
+    Citation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples/Spatiotemporal_Engression_Examples.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="cite.html">
+    Citation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Losses.html">Loss Functions (stengression.Losses)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Models.html">Spatiotemporal Engression Models (stengression.Models)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="models_gcen.html">Graph Convolutional Engression Network (GCEN)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Spatio-Temporal Engression Network (STEN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models_mven.html">Multivariate Engression Network (MVEN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Utils.html">Utils (stengression.Utils)</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="api.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="Models.html" class="nav-link">Spatiotemporal Engression Models (stengression.Models)</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Spatio-Temporal Engression Network (STEN)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="spatio-temporal-engression-network-sten">
+<h1>Spatio-Temporal Engression Network (STEN)<a class="headerlink" href="#spatio-temporal-engression-network-sten" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="stengression.Models.STEN">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stengression.Models.</span></span><span class="sig-name descname"><span class="pre">STEN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_feat_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_spatial_lag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_hidden_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_num_layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_dropout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_lag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_encode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'add'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gaussian'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temporal_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN" title="Link to this definition">#</a></dt>
+<dd><p>Spatio-Temporal Engression Network.</p>
+<p>Combines the STAR-Layer and Engression-LSTM for probabilistic
+spatiotemporal forecasting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_feat_dim</strong> (<em>int</em>) – Number of input features for each node (D).</p></li>
+<li><p><strong>embedding_dim</strong> (<em>int</em>) – The dimension of the spatial embedding (D’).</p></li>
+<li><p><strong>max_spatial_lag</strong> (<em>int</em>) – The maximum spatial lag (L) for the STAR-Layer.</p></li>
+<li><p><strong>p_lag</strong> (<em>int</em>) – Number of past timesteps used as input (input sequence length).</p></li>
+<li><p><strong>t_pred</strong> (<em>int</em>) – Number of future timesteps predicted (forecast horizon).</p></li>
+<li><p><strong>lstm_hidden_dim</strong> (<em>int</em>) – Hidden dimension size of the LSTM temporal module.</p></li>
+<li><p><strong>lstm_num_layers</strong> (<em>int</em>) – Number of layers in the LSTM.</p></li>
+<li><p><strong>lstm_dropout</strong> (<em>float</em>) – Dropout probability in the LSTM.</p></li>
+<li><p><strong>noise_dist</strong> (<em>str</em>) – Distribution type for noise injection (‘gaussian’ or ‘uniform’).</p></li>
+<li><p><strong>noise_encode</strong> (<em>str</em>) – Method for noise injection: ‘add’ (additive) or ‘concat’ (concatenation).</p></li>
+<li><p><strong>noise_dim</strong> (<em>int</em>) – Dimension of noise features if concatenated.</p></li>
+<li><p><strong>noise_std</strong> (<em>int</em>) – Standard deviation/scaling of the noise.</p></li>
+<li><p><strong>num_nodes</strong> (<em>int</em>) – Number of nodes in the graph.</p></li>
+<li><p><strong>temporal_seed</strong> (<em>int</em>) – Seed for reproducibility in LSTM initialization.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">STEN</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">in_feat_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">lstm_hidden_dim</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">lstm_num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">lstm_dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">p_lag</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">t_pred</span><span class="o">=</span><span class="mi">4</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">energy_score_loss</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">num_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">history_tensor</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecast_samples</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">history_tensor</span><span class="p">,</span> <span class="n">m_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># In-sample analysis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_sample_preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_in_sample</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">train_data</span><span class="p">,</span> <span class="n">m_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;q_step&quot;</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">residuals</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_residuals</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">in_sample_preds</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">point_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">plot_residuals</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">plots_per_row</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Out-of-sample evaluation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics_df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate_forecasts</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">history_tensor</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">point_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="n">W_list</span><span class="o">=</span><span class="n">W_list</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.evaluate_forecasts">
+<span class="sig-name descname"><span class="pre">evaluate_forecasts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unstandardize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN.evaluate_forecasts" title="Link to this definition">#</a></dt>
+<dd><p>Repeatedly generate probabilistic forecasts from a single trained model
+and return summary metrics.</p>
+<p>This method performs Monte Carlo style evaluation by generating multiple
+ensembles to account for the stochastic nature of the engression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>history</strong> (<em>torch.Tensor</em>) – Last <code class="docutils literal notranslate"><span class="pre">p_lag</span></code> observations of shape
+<span class="math notranslate nohighlight">\((T_{in}, N, D_{in})\)</span>.</p></li>
+<li><p><strong>y_true</strong> (<em>torch.Tensor</em>) – Ground truth for the forecast horizon of shape
+<span class="math notranslate nohighlight">\((T_{out}, N, D_{in})\)</span>.</p></li>
+<li><p><strong>y_train</strong> (<em>torch.Tensor</em>) – In-sample training data of shape
+<span class="math notranslate nohighlight">\((T_{train}, N, D_{in})\)</span>. Required for scaling MASE and RMSSE.</p></li>
+<li><p><strong>W_list</strong> (<em>list</em>) – List of spatial weights matrices.</p></li>
+<li><p><strong>m_samples</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of samples per forecast ensemble.
+Defaults to 100.</p></li>
+<li><p><strong>n_repeats</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of times to repeat the ensemble
+generation to calculate metric stability. Defaults to 50.</p></li>
+<li><p><strong>point_method</strong> (<em>str</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – Method to extract a point
+forecast from the ensemble. Options: <code class="docutils literal notranslate"><span class="pre">&quot;median&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code>,
+or a float quantile (e.g., <code class="docutils literal notranslate"><span class="pre">0.75</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;median&quot;</span></code>.</p></li>
+<li><p><strong>unstandardize</strong> (<em>list</em><em>, </em><em>optional</em>) – A list <code class="docutils literal notranslate"><span class="pre">[mean,</span> <span class="pre">std]</span></code> to reverse
+data normalization. Defaults to None.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Device for evaluation.
+Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A DataFrame containing the mean and standard deviation
+across repeats for the following metrics:</p>
+<ul class="simple">
+<li><p><strong>Point</strong>: SMAPE, MAE, RMSE, MASE, RMSSE.</p></li>
+<li><p><strong>Probabilistic</strong>: Pinball (80%, 95%), Rho-risk (0.5, 0.9), CRPS.</p></li>
+<li><p><strong>Calibration</strong>: Empirical Coverage, Winkler Score.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.evaluate_in_sample_fit">
+<span class="sig-name descname"><span class="pre">evaluate_in_sample_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'1_step'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unstandardize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN.evaluate_in_sample_fit" title="Link to this definition">#</a></dt>
+<dd><p>Repeatedly generates in-sample probabilistic forecasts and returns summary metrics.</p>
+<p>This method assesses the model’s ability to reconstruct the historical training
+sequence by performing multiple stochastic passes over the data. It accounts
+for the “Engression” noise injection by repeating the process <code class="docutils literal notranslate"><span class="pre">n_repeats</span></code>
+times and reporting the stability of the metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>torch.Tensor</em>) – The full historical dataset of shape
+<span class="math notranslate nohighlight">\((T, N, D_{in})\)</span>, where <span class="math notranslate nohighlight">\(T\)</span> is total time steps.</p></li>
+<li><p><strong>W_list</strong> (<em>list</em>) – List of spatial weights matrices.</p></li>
+<li><p><strong>m_samples</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of stochastic samples per forecast
+ensemble window. Defaults to 100.</p></li>
+<li><p><strong>n_repeats</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of full evaluation cycles to
+perform to calculate mean/std of metrics. Defaults to 10.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – The sliding window strategy: <code class="docutils literal notranslate"><span class="pre">&quot;1_step&quot;</span></code>
+or <code class="docutils literal notranslate"><span class="pre">&quot;q_step&quot;</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;1_step&quot;</span></code>.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of windows processed in a single
+forward pass. Defaults to 32.</p></li>
+<li><p><strong>point_method</strong> (<em>str</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – Metric for extracting a single
+forecast from the ensemble to compute point errors (SMAPE, MAE,
+RMSE, MASE, RMSSE). Accepts <code class="docutils literal notranslate"><span class="pre">&quot;median&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code>, or a
+float quantile (e.g., <code class="docutils literal notranslate"><span class="pre">0.75</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;median&quot;</span></code>.</p></li>
+<li><p><strong>unstandardize</strong> (<em>list</em><em>, </em><em>optional</em>) – A list <code class="docutils literal notranslate"><span class="pre">[mean,</span> <span class="pre">std]</span></code> used to
+rescale predictions and ground truth to original units.
+Defaults to None.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em> or </em><em>torch.device</em><em>, </em><em>optional</em>) – Computation device.
+Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A summary table containing the mean and standard
+deviation for the following metrics across all repeats:</p>
+<ul class="simple">
+<li><p><strong>Point Metrics</strong>: SMAPE, MAE, RMSE, MASE, RMSSE.</p></li>
+<li><p><strong>Probabilistic Metrics</strong>: Pinball (80%, 95%), Rho-risk (0.5, 0.9), CRPS.</p></li>
+<li><p><strong>Calibration Metrics</strong>: Empirical Coverage, Winkler Score.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Similar to <a class="reference internal" href="#stengression.Models.STEN.predict_in_sample" title="stengression.Models.STEN.predict_in_sample"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict_in_sample()</span></code></a>, metrics are calculated only
+for the time steps after the initial <code class="docutils literal notranslate"><span class="pre">p_lag</span></code> warm-up period.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monitor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visualize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN.fit" title="Link to this definition">#</a></dt>
+<dd><p>Trains the STEN model using a dataloader, optimizer, and probabilistic loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_loader</strong> (<em>torch.utils.data.DataLoader</em>) – PyTorch DataLoader yielding <code class="docutils literal notranslate"><span class="pre">(x_batch,</span> <span class="pre">y_batch)</span></code>.</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.Optimizer</em>) – PyTorch optimizer instance.</p></li>
+<li><p><strong>loss_fn</strong> (<em>callable</em>) – Loss function accepting <code class="docutils literal notranslate"><span class="pre">(target,</span> <span class="pre">pred_samples)</span></code>.</p></li>
+<li><p><strong>W_list</strong> (<em>list</em>) – List of spatial weights matrices.</p></li>
+<li><p><strong>num_epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of training epochs. Defaults to 100.</p></li>
+<li><p><strong>m_samples</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of stochastic samples per batch
+to estimate the probabilistic loss. Defaults to 2.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – Device to run training on (<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code> or <code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>).</p></li>
+<li><p><strong>monitor</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, shows a progress bar.</p></li>
+<li><p><strong>visualize</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, plots the loss curve after training.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, prints periodic loss updates.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN.forward" title="Link to this definition">#</a></dt>
+<dd><p>Forward pass of STEN for generating a single stochastic forecast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape <span class="math notranslate nohighlight">\((B, T_{in}, N, D_{in})\)</span>,
+where <span class="math notranslate nohighlight">\(B\)</span> is batch size, <span class="math notranslate nohighlight">\(T_{in}\)</span> is <code class="docutils literal notranslate"><span class="pre">p_lag</span></code>,
+<span class="math notranslate nohighlight">\(N\)</span> is <code class="docutils literal notranslate"><span class="pre">num_nodes</span></code>, and <span class="math notranslate nohighlight">\(D_{in}\)</span> is <code class="docutils literal notranslate"><span class="pre">in_feat_dim</span></code>.</p></li>
+<li><p><strong>W_list</strong> (<em>list</em>) – List of spatial weights matrices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Forecasted tensor of shape <span class="math notranslate nohighlight">\((B, T_{out}, N, D_{in})\)</span>, where <span class="math notranslate nohighlight">\(T_{out}\)</span> is <code class="docutils literal notranslate"><span class="pre">t_pred</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.get_residuals">
+<span class="sig-name descname"><span class="pre">get_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_sample_preds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'median'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#stengression.Models.STEN.get_residuals" title="Link to this definition">#</a></dt>
+<dd><p>Computes the residual matrix from in-sample predictions.</p>
+<p>This method reduces the stochastic ensemble into a single point forecast
+using the specified <code class="docutils literal notranslate"><span class="pre">point_method</span></code> and calculates the error:
+<span class="math notranslate nohighlight">\(Residual = Actual - Predicted\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_sample_preds</strong> (<em>torch.Tensor</em>) – Predictions from <a class="reference internal" href="#stengression.Models.STEN.predict_in_sample" title="stengression.Models.STEN.predict_in_sample"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict_in_sample()</span></code></a>
+with shape <span class="math notranslate nohighlight">\((M, T, N, D)\)</span>, where <span class="math notranslate nohighlight">\(M\)</span> is the number
+of samples.</p></li>
+<li><p><strong>original_data</strong> (<em>torch.Tensor</em>) – The ground truth dataset of shape
+<span class="math notranslate nohighlight">\((T, N, D)\)</span>.</p></li>
+<li><p><strong>point_method</strong> (<em>str</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – Method to extract a point
+forecast from the ensemble. Options: <code class="docutils literal notranslate"><span class="pre">&quot;median&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code>,
+or a float representing a quantile (e.g., <code class="docutils literal notranslate"><span class="pre">0.75</span></code>).
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;median&quot;</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Residual tensor of shape <span class="math notranslate nohighlight">\((T, N, D)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Following the structure of the in-sample predictions, the first
+<code class="docutils literal notranslate"><span class="pre">p_lag</span></code> time steps will contain <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values. These represent
+the “warm-up” period where no forecasts were generated.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.plot_in_sample_fit">
+<span class="sig-name descname"><span class="pre">plot_in_sample_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_sample_preds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plots_per_row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'STEN:</span> <span class="pre">In-Sample</span> <span class="pre">Forecast</span> <span class="pre">Fit</span> <span class="pre">vs.</span> <span class="pre">Actual'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN.plot_in_sample_fit" title="Link to this definition">#</a></dt>
+<dd><p>Plots in-sample forecasted time series against actual ground truth values.</p>
+<p>This method generates a grid of subplots (one per node) showing the median
+forecast, the ground truth, and a shaded prediction interval based on the
+stochastic ensemble.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_sample_preds</strong> (<em>torch.Tensor</em>) – Prediction ensemble from
+<a class="reference internal" href="#stengression.Models.STEN.predict_in_sample" title="stengression.Models.STEN.predict_in_sample"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict_in_sample()</span></code></a> of shape <span class="math notranslate nohighlight">\((M, T, N, D)\)</span>.</p></li>
+<li><p><strong>original_data</strong> (<em>torch.Tensor</em>) – Ground truth dataset of shape
+<span class="math notranslate nohighlight">\((T, N, D)\)</span>.</p></li>
+<li><p><strong>plots_per_row</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of subplots to display per row
+in the figure grid. Defaults to 4.</p></li>
+<li><p><strong>confidence_level</strong> (<em>float</em><em>, </em><em>optional</em>) – The width of the shaded prediction
+interval (e.g., <code class="docutils literal notranslate"><span class="pre">0.95</span></code> for a 95% interval). Defaults to 0.95.</p></li>
+<li><p><strong>node_names</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Custom labels for each node. If
+None, nodes are labeled by index. Defaults to None.</p></li>
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – The main title for the entire figure.</p></li>
+<li><p><strong>savefig</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the resulting figure is exported
+to a file. Defaults to False.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – The file path/name for saving the figure
+(e.g., ‘fit_plot.png’). Required if <code class="docutils literal notranslate"><span class="pre">savefig</span></code> is True.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The shaded area represents the uncertainty captured by the Engression
+noise injection. The bounds are calculated as the
+<span class="math notranslate nohighlight">\((1 - confidence\_level)/2\)</span> and <span class="math notranslate nohighlight">\((1 + confidence\_level)/2\)</span>
+quantiles of the ensemble.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This method displays the plot using <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> or saves it to disk.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.plot_residuals">
+<span class="sig-name descname"><span class="pre">plot_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residuals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plots_per_row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'STEN:</span> <span class="pre">In-Sample</span> <span class="pre">Residuals</span> <span class="pre">per</span> <span class="pre">Node'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STEN.plot_residuals" title="Link to this definition">#</a></dt>
+<dd><p>Plots the time series of residuals (errors) for each node in a grid.</p>
+<p>This visualization helps in identifying systematic biases or patterns in
+the model’s errors across different spatial nodes. A horizontal line at
+zero is included for reference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>residuals</strong> (<em>torch.Tensor</em>) – Residual matrix obtained from
+<a class="reference internal" href="#stengression.Models.STEN.get_residuals" title="stengression.Models.STEN.get_residuals"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_residuals()</span></code></a>, with shape <span class="math notranslate nohighlight">\((T, N, D)\)</span>.</p></li>
+<li><p><strong>plots_per_row</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of subplots to display in
+each row of the grid. Defaults to 4.</p></li>
+<li><p><strong>node_names</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Labels for each node subplot.
+If None, node indices are used. Defaults to None.</p></li>
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – The main title for the figure.
+Defaults to ‘STEN: In-Sample Residuals per Node’.</p></li>
+<li><p><strong>savefig</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the plot will be saved to the
+specified <code class="docutils literal notranslate"><span class="pre">filename</span></code>. Defaults to False.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Path where the figure should be saved.
+Required if <code class="docutils literal notranslate"><span class="pre">savefig</span></code> is True. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values present in the residuals (typically the first
+<code class="docutils literal notranslate"><span class="pre">p_lag</span></code> steps) are automatically handled by the plotting
+backend and will appear as gaps in the time series.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Displays the plot using <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> or saves the file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unstandardize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#stengression.Models.STEN.predict" title="Link to this definition">#</a></dt>
+<dd><p>Generates an ensemble of forecasts for a single historical observation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>history</strong> (<em>torch.Tensor</em>) – Past observations of shape <span class="math notranslate nohighlight">\((T_{in}, N, D_{in})\)</span>.</p></li>
+<li><p><strong>W_list</strong> (<em>list</em>) – List of spatial weights matrices.</p></li>
+<li><p><strong>m_samples</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of ensemble members to generate.
+Defaults to 100.</p></li>
+<li><p><strong>unstandardize</strong> (<em>list</em><em>, </em><em>optional</em>) – A list <code class="docutils literal notranslate"><span class="pre">[mean,</span> <span class="pre">std]</span></code> to reverse
+data normalization. Defaults to None.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – Computation device. Defaults to <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ensemble of forecasts of shape <span class="math notranslate nohighlight">\((M, T_{out}, N, D_{in})\)</span>,  where <span class="math notranslate nohighlight">\(M\)</span> is <code class="docutils literal notranslate"><span class="pre">m_samples</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STEN.predict_in_sample">
+<span class="sig-name descname"><span class="pre">predict_in_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'1_step'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unstandardize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#stengression.Models.STEN.predict_in_sample" title="Link to this definition">#</a></dt>
+<dd><p>Generates in-sample predictions for the entire training dataset.</p>
+<p>This method applies a sliding window across the provided historical data
+to produce stochastic forecasts for every possible time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>torch.Tensor</em>) – The original dataset of shape <span class="math notranslate nohighlight">\((T, N, D)\)</span>,
+where <span class="math notranslate nohighlight">\(T\)</span> is the total time steps.</p></li>
+<li><p><strong>W_list</strong> (<em>list</em>) – List of spatial weights matrices.</p></li>
+<li><p><strong>m_samples</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of stochastic forecast samples
+to generate per window. Defaults to 100.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Strategy for in-sample forecasting.
+Options include:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;1_step&quot;</span></code>: Slides the input window by 1 step, recording
+only the 1-step ahead forecast for each position.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;q_step&quot;</span></code>: Slides by <code class="docutils literal notranslate"><span class="pre">t_pred</span></code> (q) steps, recording
+full non-overlapping forecast horizons.</p></li>
+</ul>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;1_step&quot;</span></code>.</p>
+</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of windows to process
+simultaneously to optimize memory. Defaults to 64.</p></li>
+<li><p><strong>unstandardize</strong> (<em>list</em><em>, </em><em>optional</em>) – A list <code class="docutils literal notranslate"><span class="pre">[mean,</span> <span class="pre">std]</span></code> to reverse
+data normalization. Defaults to None.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – Device to perform computations on.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>In-sample forecast ensemble of shape <span class="math notranslate nohighlight">\((M, T, N, D)\)</span>, where <span class="math notranslate nohighlight">\(M\)</span> is <code class="docutils literal notranslate"><span class="pre">m_samples</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first <code class="docutils literal notranslate"><span class="pre">p_lag</span></code> time steps in the output tensor will contain
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code> values because there is insufficient historical context
+to generate a forecast for the beginning of the sequence.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stengression.Models.STARLayer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stengression.Models.</span></span><span class="sig-name descname"><span class="pre">STARLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_spatial_lag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STARLayer" title="Link to this definition">#</a></dt>
+<dd><p>A differentiable neural layer inspired by the STARMA model’s spatial component.</p>
+<p>This layer computes a spatial embedding by aggregating features from neighbors
+at multiple spatial lags (distances). It transforms node features through
+a combination of learnable weights and fixed spatial weight matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> (<em>int</em>) – Number of input features for each node (D).</p></li>
+<li><p><strong>out_features</strong> (<em>int</em>) – Number of output features for each node (D’).</p></li>
+<li><p><strong>max_spatial_lag</strong> (<em>int</em>) – The maximum spatial lag (L) to consider.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The forward pass expects a list of spatial weight matrices (W_list),
+where each matrix represents a specific spatial lag.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="stengression.Models.STARLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stengression.Models.STARLayer.forward" title="Link to this definition">#</a></dt>
+<dd><p>Forward pass for the STAR-Layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch, seq_len, num_nodes, in_features).</p></li>
+<li><p><strong>W_list</strong> (<em>list</em><em> of </em><em>torch.Tensor</em>) – A list of spatial weight matrices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The spatial embedding tensor of shape (batch, seq_len, num_nodes, out_features).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shapes:</dt><dd><ul class="simple">
+<li><p><strong>Input</strong>: <span class="math notranslate nohighlight">\((B, T, N, D_{in})\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is num_nodes, <span class="math notranslate nohighlight">\(B\)</span> is batch_size, <span class="math notranslate nohighlight">\(T\)</span> is sequence_length, and <span class="math notranslate nohighlight">\(D_{in}\)</span> is in_feat.</p></li>
+<li><p><strong>Output</strong>: <span class="math notranslate nohighlight">\((B, T, N, D_{out})\)</span> where <span class="math notranslate nohighlight">\(D_{out}\)</span> is <span class="math notranslate nohighlight">\(D'\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="models_gcen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Graph Convolutional Engression Network (GCEN)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="models_mven.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multivariate Engression Network (MVEN)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN"><code class="docutils literal notranslate"><span class="pre">STEN</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.evaluate_forecasts"><code class="docutils literal notranslate"><span class="pre">STEN.evaluate_forecasts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.evaluate_in_sample_fit"><code class="docutils literal notranslate"><span class="pre">STEN.evaluate_in_sample_fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.fit"><code class="docutils literal notranslate"><span class="pre">STEN.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.forward"><code class="docutils literal notranslate"><span class="pre">STEN.forward()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.get_residuals"><code class="docutils literal notranslate"><span class="pre">STEN.get_residuals()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.plot_in_sample_fit"><code class="docutils literal notranslate"><span class="pre">STEN.plot_in_sample_fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.plot_residuals"><code class="docutils literal notranslate"><span class="pre">STEN.plot_residuals()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.predict"><code class="docutils literal notranslate"><span class="pre">STEN.predict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STEN.predict_in_sample"><code class="docutils literal notranslate"><span class="pre">STEN.predict_in_sample()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STARLayer"><code class="docutils literal notranslate"><span class="pre">STARLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stengression.Models.STARLayer.forward"><code class="docutils literal notranslate"><span class="pre">STARLayer.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/models_sten.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rajdeep Pathak and Tanujit Chakraborty.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
