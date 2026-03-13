@@ -1,6 +1,4 @@
 # .readthedocs.yaml
-# Read the Docs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
 version: 2
 
@@ -14,5 +12,9 @@ sphinx:
 
 python:
   install:
+    # Install actual package
     - method: pip
       path: .
+      
+    # Install Sphinx theme and extensions
+    - requirements: docs/requirements.txt
