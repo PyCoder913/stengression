@@ -1,4 +1,4 @@
-# Deep Generative Spatiotemporal Engression for Probabilistic Forecasting of Epidemics
+# Deep Generative Spatiotemporal Engression for Probabilistic Forecasting
 
 [![Paper](https://img.shields.io/badge/arXiv-Preprint-b31b1b.svg)](https://arxiv.org/abs/2603.07108) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
