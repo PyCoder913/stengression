@@ -1,6 +1,6 @@
 # Deep Generative Spatiotemporal Engression for Probabilistic Forecasting
 
-[![Paper](https://img.shields.io/badge/arXiv-Preprint-b31b1b.svg)](https://arxiv.org/abs/2603.07108) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Paper](https://img.shields.io/badge/TMLR-Paper-blue.svg)](https://openreview.net/pdf?id=7AfAztCd5A) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains the official implementation of the paper **"Deep Generative Spatiotemporal Engression for Probabilistic Forecasting of Epidemics"** by Rajdeep Pathak and Tanujit Chakraborty.
 
@@ -47,6 +47,7 @@ If you use this code, models, or find our work helpful in your research, please 
 @article{pathak2026deep,
   title={Deep Generative Spatiotemporal Engression for Probabilistic Forecasting of Epidemics},
   author={Pathak, Rajdeep and Chakraborty, Tanujit},
-  journal={arXiv preprint arXiv:2603.07108},
-  year={2026}
+  journal={Transactions on Machine Learning Research},
+  year={2026},
+  url={https://openreview.net/pdf?id=7AfAztCd5A}
 }
